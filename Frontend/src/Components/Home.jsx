@@ -5,9 +5,9 @@ import { FaPlus, FaMinus } from "react-icons/fa";
 
 import logo from '../assets/Avarniya.png'
 
-import video from "../assets/intro3.mp4";
 
-import partner from "../assets/partner.png";
+
+import partner from "../assets/partner.jpg";
 
 
 const faqs = [
