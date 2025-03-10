@@ -12,7 +12,7 @@ const PaymentPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [paymentImage, setPaymentImage] = useState(null);
   const [showApprovalMessage, setShowApprovalMessage] = useState(false);
-  const [imageError, setImageError] = useState(""); // State for image error message
+  const [imageError, setImageError] = useState("");
   const formData = location.state?.formData;
 
   React.useEffect(() => {
@@ -47,9 +47,8 @@ const PaymentPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setImageError(""); // Reset image error message
+    setImageError("");
 
-    // Check if the image size exceeds 2MB (2 * 1024 * 1024 bytes)
     if (paymentImage && paymentImage.size > 2 * 1024 * 1024) {
       setImageError("File size exceeds 2MB. Please upload a smaller file.");
       setIsLoading(false);
@@ -108,8 +107,8 @@ const PaymentPage = () => {
   if (showApprovalMessage) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-black p-6">
-        <div className="bg-gray-900 p-8 rounded-2xl shadow-2xl w-full max-w-md border border-purple-500/20">
-          <h2 className="text-3xl font-bold text-purple-400 mb-6 text-center">
+        <div className="bg-gray-900 p-8 rounded-2xl shadow-2xl w-full max-w-md border border-gray-400/30">
+          <h2 className="text-3xl font-bold text-gray-200 mb-6 text-center">
             Registration Pending
           </h2>
           <div className="text-gray-300 space-y-4">
@@ -125,7 +124,7 @@ const PaymentPage = () => {
           </div>
           <button
             onClick={() => navigate("/login")}
-            className="mt-8 w-full bg-gradient-to-r from-purple-600 to-purple-800 text-white py-3 px-6 rounded-lg font-medium hover:from-purple-700 hover:to-purple-900 transition duration-300 shadow-lg"
+            className="mt-8 w-full bg-gray-700 text-gray-200 py-3 px-6 rounded-lg font-medium hover:bg-gray-600 transition duration-300 shadow-lg"
           >
             Go to Login
           </button>
@@ -136,8 +135,8 @@ const PaymentPage = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-black p-6">
-      <div className="bg-gray-900 p-8 rounded-2xl shadow-2xl w-full max-w-md border border-purple-500/20">
-        <h2 className="text-3xl font-bold text-purple-400 text-center mb-8">
+      <div className="bg-gray-900 p-8 rounded-2xl shadow-2xl w-full max-w-md border border-gray-400/30">
+        <h2 className="text-3xl font-bold text-gray-200 text-center mb-8">
           Complete Payment
         </h2>
 
@@ -147,7 +146,7 @@ const PaymentPage = () => {
             alt="Payment QR Code"
             className="w-64 h-64 mx-auto rounded-lg shadow-lg"
           />
-          <p className="text-purple-300 text-center mt-4 font-medium">
+          <p className="text-gray-300 text-center mt-4 font-medium">
             Scan QR code to pay ₹310
           </p>
         </div>
@@ -156,7 +155,7 @@ const PaymentPage = () => {
           <div>
             <label
               htmlFor="transactionId"
-              className="block text-purple-300 mb-2 font-medium"
+              className="block text-gray-300 mb-2 font-medium"
             >
               UTR ID
             </label>
@@ -170,17 +169,17 @@ const PaymentPage = () => {
               }}
               maxLength={12}
               pattern=".{12,12}"
-              className="w-full px-4 py-3 rounded-lg bg-black border border-purple-500/30 text-white focus:outline-none focus:border-purple-500 transition duration-200"
+              className="w-full px-4 py-3 rounded-lg bg-black border border-gray-400/30 text-gray-200 focus:outline-none focus:border-gray-300 transition duration-200"
               required
               disabled={isLoading}
             />
-            <p className="text-sm text-purple-300 mt-1">UTR ID must be exactly 12 characters</p>
+            <p className="text-sm text-gray-300 mt-1">UTR ID must be exactly 12 characters</p>
           </div>
 
           <div>
             <label
               htmlFor="paymentScreenshot"
-              className="block text-purple-300 mb-2 font-medium"
+              className="block text-gray-300 mb-2 font-medium"
             >
               Payment Screenshot
             </label>
@@ -189,17 +188,17 @@ const PaymentPage = () => {
               id="paymentScreenshot"
               accept="image/*"
               onChange={(e) => setPaymentImage(e.target.files[0])}
-              className="w-full px-4 py-3 rounded-lg bg-black border border-purple-500/30 text-white focus:outline-none focus:border-purple-500 transition duration-200"
+              className="w-full px-4 py-3 rounded-lg bg-black border border-gray-400/30 text-gray-200 focus:outline-none focus:border-gray-300 transition duration-200"
               required
               disabled={isLoading}
             />
-            <p className="text-sm text-purple-300 mt-1">Image size should be less than 2MB.</p> {/* Note about image size */}
-            {imageError && <p className="text-red-500 text-sm mt-1">{imageError}</p>} {/* Display error message */}
+            <p className="text-sm text-gray-300 mt-1">Image size should be less than 2MB.</p>
+            {imageError && <p className="text-red-500 text-sm mt-1">{imageError}</p>}
           </div>
 
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-purple-600 to-purple-800 text-white py-3 px-6 rounded-lg font-medium hover:from-purple-700 hover:to-purple-900 transition duration-300 disabled:opacity-50 shadow-lg mt-8"
+            className="w-full bg-gray-700 text-gray-200 py-3 px-6 rounded-lg font-medium hover:bg-gray-600 transition duration-300 disabled:opacity-50 shadow-lg mt-8"
             disabled={isLoading}
           >
             {isLoading ? (
