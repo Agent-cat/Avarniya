@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import poster1 from "../assets/2025.jpg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+
 
 const Events = () => {
   const url = import.meta.env.VITE_API_URL;
@@ -257,8 +256,8 @@ const Events = () => {
   return (
     <div className="min-h-screen bg-black">
       <div className="max-w-7xl mx-auto px-4 py-16">
-        <h1 className="text-6xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-16">
-          Festival Events
+        <h1 className="text-6xl font-bold text-center text-white mb-20 mt-16">
+          Our Events
         </h1>
 
         {error ? (

@@ -312,7 +312,7 @@ const Home = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="text-2xl sm:text-3xl md:text-4xl font-saint-carell font-bold mb-6 md:mb-8 text-center text-white"
+            className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold mb-6 md:mb-8 text-center text-white"
           >
             About Avarniya
           </motion.h1>
@@ -336,7 +336,7 @@ const Home = () => {
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            className="text-2xl sm:text-3xl md:text-4xl font-saint-carell font-bold mb-8 sm:mb-12 text-center"
+            className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold mb-8 sm:mb-12 text-center"
           >
             FAQ'S
           </motion.h2>
@@ -349,9 +349,9 @@ const Home = () => {
                 >
                   <span className="text-lg font-medium">{faq.question}</span>
                   {openFaq === index ? (
-                    <FaMinus className="flex-shrink-0 text-purple-500" />
+                    <FaMinus className="flex-shrink-0 text-silver" />
                   ) : (
-                    <FaPlus className="flex-shrink-0 text-purple-500" />
+                    <FaPlus className="flex-shrink-0 text-silver" />
                   )}
                 </button>
                 {openFaq === index && (
@@ -367,13 +367,13 @@ const Home = () => {
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            className="text-2xl sm:text-3xl md:text-4xl font-saint-carell font-bold mb-8 sm:mb-12 text-center z-50"
+            className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold mb-8 sm:mb-12 text-center z-50"
           >
             Our Partners
           </motion.h2>
           <div className="">
             <div className="flex justify-center">
-              <img src={partner} alt="" className="g1 h-32 w-80" />
+              <img src={partner} alt="" className="g1 h-64 w-60" />
             </div>
           </div>
         </div>
