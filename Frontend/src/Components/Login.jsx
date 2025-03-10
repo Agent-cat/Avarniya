@@ -5,7 +5,6 @@ import { setToken, setUser } from "../utils/auth";
 import ErrorPopup from "./ErrorPopup";
 
 const Login = () => {
-
   const url = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -60,19 +59,19 @@ const Login = () => {
   return (
     <>
       {error && <ErrorPopup message={error} onClose={() => setError(null)} />}
-      <div className="min-h-screen relative flex items-center justify-center px-4 bg-black">
+      <div className="min-h-screen relative flex items-center justify-center px-4 py-8 bg-black">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="bg-white/10 p-8 rounded-lg backdrop-blur-sm w-full max-w-md relative z-20"
+          className="bg-gray-900/80 p-8 rounded-2xl backdrop-blur-sm w-full max-w-md relative z-20 border border-gray-400/30"
         >
-          <h2 className="text-3xl font-saint-carell text-white text-center mb-8">
+          <h2 className="text-3xl font-saint-carell text-gray-200 text-center mb-8">
             Login
           </h2>
           <form onSubmit={handleLogin} className="space-y-6">
             <div>
-              <label htmlFor="email" className="block text-white mb-2">
+              <label htmlFor="email" className="block text-gray-300 mb-2">
                 Email
               </label>
               <input
@@ -81,12 +80,13 @@ const Login = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-4 py-2 rounded bg-black border border-white/20 text-white focus:outline-none focus:border-white"
+                className="w-full px-4 py-2 rounded-xl bg-black border border-gray-400/30 text-gray-200 focus:outline-none focus:border-gray-300"
                 required
+                disabled={isLoading}
               />
             </div>
             <div>
-              <label htmlFor="password" className="block text-white mb-2">
+              <label htmlFor="password" className="block text-gray-300 mb-2">
                 Password
               </label>
               <input
@@ -95,14 +95,15 @@ const Login = () => {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full px-4 py-2 rounded bg-black border border-white/20 text-white focus:outline-none focus:border-white"
+                className="w-full px-4 py-2 rounded-xl bg-black border border-gray-400/30 text-gray-200 focus:outline-none focus:border-gray-300"
                 required
+                disabled={isLoading}
               />
             </div>
             <div className="flex justify-end">
               <Link
                 to="/forgot-password"
-                className="text-sm text-purple-300 hover:text-purple-200 transition-colors"
+                className="text-sm text-gray-400 hover:text-gray-300 transition-colors"
               >
                 Forgot Password?
               </Link>
@@ -110,17 +111,15 @@ const Login = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-full bg-purple-600 text-white py-2 rounded hover:bg-purple-700 transition-colors duration-300 ${isLoading
-                ? "opacity-50 cursor-not-allowed"
-                : ""
+              className={`w-full bg-gray-700 text-gray-200 p-3 rounded-xl transition-all duration-300 hover:bg-gray-600 ${isLoading ? "opacity-50 cursor-not-allowed" : ""
                 }`}
             >
               {isLoading ? "Logging in..." : "Login"}
             </button>
           </form>
-          <p className="text-white/60 text-center mt-4">
+          <p className="text-gray-400 text-center mt-6">
             Don't have an account?{" "}
-            <Link to="/register" className="text-white hover:text-gray-300">
+            <Link to="/register" className="text-gray-200 hover:text-gray-300">
               Register here
             </Link>
           </p>

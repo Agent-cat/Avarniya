@@ -4,85 +4,79 @@ import { Link } from "react-router-dom";
 
 const PleaseLogin = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-black backdrop-blur-lg">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-black">
       <motion.div
-        initial={{ scale: 0, rotate: 0 }}
-        animate={{
-          scale: 1,
-          rotate: [0, -10, 10, -10, 0],
-        }}
-        transition={{
-          duration: 0.5,
-          rotate: {
-            duration: 0.5,
-            delay: 0.5,
-            ease: "easeInOut",
-          },
-        }}
-        className="w-32 h-32 relative"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="bg-gray-900/80 p-8 rounded-2xl backdrop-blur-sm border border-gray-400/30 max-w-md w-full mx-4"
       >
-        <motion.div
-          className="w-full h-full flex items-center justify-center"
-          initial={{ y: -50 }}
-          animate={{ y: [0, -10, 0] }}
-          transition={{
-            y: {
-              duration: 1,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "easeInOut",
-            },
-          }}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-24 h-24 text-purple-500"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+        <div className="flex justify-center mb-6">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5 }}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-            />
-          </svg>
-        </motion.div>
-      </motion.div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-20 h-20 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              />
+            </svg>
+          </motion.div>
+        </div>
 
-      <motion.h1
-        className="text-4xl font-bold mt-12 text-white font-saint-carell text-center"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      >
-        Login Required
-      </motion.h1>
-
-      <motion.p
-        className="mt-4 text-gray-300 text-lg text-center max-w-md px-4"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-      >
-        This area is locked and requires authentication. Please log in to access
-        the content.
-      </motion.p>
-
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        transition={{ duration: 0.3, delay: 0.6 }}
-      >
-        <Link
-          to="/login"
-          className="mt-8 px-10 py-4 bg-gradient-to-r from-purple-500 to-violet-500 text-white rounded-lg font-medium hover:from-purple-600 hover:to-violet-600 transition-all duration-300 flex items-center justify-center text-lg shadow-lg"
+        <motion.h1
+          className="text-3xl  text-gray-200 text-center mb-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
-          Login
-        </Link>
+          Authentication Required
+        </motion.h1>
+
+        <motion.p
+          className="text-gray-400 text-center mb-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          Please log in to your account to access this content. Only authenticated users can view this area.
+        </motion.p>
+
+        <motion.div
+          className="flex justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          <Link
+            to="/login"
+            className="px-8 py-3 bg-gray-700 text-gray-200 rounded-xl transition-all duration-300 hover:bg-gray-600 flex items-center gap-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z"
+                clipRule="evenodd"
+              />
+            </svg>
+            Login Now
+          </Link>
+        </motion.div>
       </motion.div>
     </div>
   );

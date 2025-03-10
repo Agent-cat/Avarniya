@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
 const Events = () => {
   const url = import.meta.env.VITE_API_URL;
   const [events, setEvents] = useState([]);
@@ -43,8 +42,6 @@ const Events = () => {
   useEffect(() => {
     fetchEvents();
   }, []);
-
-  // ... [Previous handler functions remain the same until render methods]
 
   const handleCategoryClick = (chartIndex, catIndex) => {
     const categoryId = `${chartIndex}-${catIndex}`;
@@ -153,19 +150,19 @@ const Events = () => {
   };
 
   const SuccessPopup = () => (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex  items-center justify-center z-50">
-      <div className="bg-white dark:bg-gray-900 rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl border border-purple-500/20">
+    <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50">
+      <div className="bg-gray-900 rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl border border-gray-700">
         <div className="text-center">
-          <div className="w-16 h-16 bg-green-500 rounded-full mx-auto mb-4 flex items-center justify-center">
-            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="w-16 h-16 bg-gray-700 rounded-full mx-auto mb-4 flex items-center justify-center">
+            <svg className="w-8 h-8 text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h3 className="text-2xl font-bold text-green-500 mb-2">Success!</h3>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">You're all set! See you at the event!</p>
+          <h3 className="text-2xl font-bold text-gray-200 mb-2">Success!</h3>
+          <p className="text-gray-400 mb-6">You're all set! See you at the event!</p>
           <button
             onClick={() => setShowSuccessPopup(false)}
-            className="w-full bg-green-500 text-white px-6 py-3 rounded-xl hover:bg-green-600 transition-all duration-300 transform hover:scale-105"
+            className="w-full bg-gray-700 text-gray-200 px-6 py-3 rounded-xl hover:bg-gray-600 transition-all duration-300"
           >
             Got it!
           </button>
@@ -176,17 +173,17 @@ const Events = () => {
 
   const RegisterPopup = () => (
     <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50">
-      <div className="bg-white dark:bg-gray-900 rounded-3xl p-8 max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto shadow-2xl border border-purple-500/20">
-        <h3 className="text-3xl font-bold text-purple-500 mb-6">
+      <div className="bg-gray-900 rounded-3xl p-8 max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto shadow-2xl border border-gray-700">
+        <h3 className="text-3xl font-bold text-gray-200 mb-6">
           {selectedEvent?.title}
         </h3>
 
         <div className="space-y-6">
-          <div className="bg-purple-50 dark:bg-gray-800 rounded-2xl p-6">
-            <h4 className="text-xl font-semibold text-purple-900 dark:text-purple-300 mb-4">
+          <div className="bg-gray-800 rounded-2xl p-6">
+            <h4 className="text-xl font-semibold text-gray-200 mb-4">
               Terms and Conditions
             </h4>
-            <div className="space-y-3 text-gray-700 dark:text-gray-300">
+            <div className="space-y-3 text-gray-400">
               {selectedEvent?.termsandconditions ? (
                 selectedEvent.termsandconditions.split('.').filter(term => term.trim()).map((term, index) => (
                   <p key={index} className="flex items-start">
@@ -211,15 +208,15 @@ const Events = () => {
               type="checkbox"
               checked={acceptedTerms}
               onChange={(e) => setAcceptedTerms(e.target.checked)}
-              className="w-5 h-5 rounded border-purple-300 text-purple-500 focus:ring-purple-500"
+              className="w-5 h-5 rounded border-gray-600 text-gray-500 focus:ring-gray-500"
             />
-            <span className="text-gray-700 dark:text-gray-300 group-hover:text-purple-500 transition-colors">
+            <span className="text-gray-400 group-hover:text-gray-200 transition-colors">
               I accept the terms and conditions
             </span>
           </label>
 
           {error && (
-            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-500/20 rounded-xl p-4 text-red-600 dark:text-red-300">
+            <div className="bg-red-900/20 border border-red-500/20 rounded-xl p-4 text-red-400">
               {error}
             </div>
           )}
@@ -228,10 +225,10 @@ const Events = () => {
             <button
               onClick={handleRegistrationSubmit}
               disabled={!acceptedTerms}
-              className={`flex-1 px-6 py-3 rounded-xl font-medium transition-all duration-300 transform
+              className={`flex-1 px-6 py-3 rounded-xl font-medium transition-all duration-300
                 ${!acceptedTerms
-                  ? "bg-gray-200 dark:bg-gray-700 text-gray-400 cursor-not-allowed"
-                  : "bg-purple-500 text-white hover:bg-purple-600 hover:scale-105"
+                  ? "bg-gray-700 text-gray-500 cursor-not-allowed"
+                  : "bg-gray-700 text-gray-200 hover:bg-gray-600"
                 }`}
             >
               Confirm
@@ -243,7 +240,7 @@ const Events = () => {
                 setAcceptedTerms(false);
                 setError(null);
               }}
-              className="px-6 py-3 rounded-xl font-medium border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 transform hover:scale-105"
+              className="px-6 py-3 rounded-xl font-medium border-2 border-gray-700 text-gray-400 hover:bg-gray-800 transition-all duration-300"
             >
               Cancel
             </button>
@@ -256,19 +253,19 @@ const Events = () => {
   return (
     <div className="min-h-screen bg-black">
       <div className="max-w-7xl mx-auto px-4 py-16">
-        <h1 className="text-6xl font-bold text-center text-white mb-20 mt-16">
+        <h1 className="text-6xl font-bold text-center text-gray-200 mb-20 mt-16">
           Our Events
         </h1>
 
         {error ? (
-          <div className="text-red-500 text-center p-6 bg-red-500/10 rounded-2xl">
+          <div className="text-red-400 text-center p-6 bg-red-900/10 rounded-2xl">
             {error}
           </div>
         ) : (
           <div className="space-y-8">
             {events.map((category, categoryIndex) => (
               <div key={categoryIndex} className="space-y-6">
-                <h2 className="text-2xl font-bold text-purple-400 border-b-2 border-purple-500/30 pb-2">
+                <h2 className="text-2xl font-bold text-gray-400 border-b-2 border-gray-700 pb-2">
                   {category.categoryName}
                 </h2>
 
@@ -276,7 +273,7 @@ const Events = () => {
                   {category.Events?.map((event, eventIndex) => (
                     <div
                       key={eventIndex}
-                      className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 cursor-pointer"
+                      className="bg-gray-900/50 backdrop-blur-lg rounded-2xl p-6 hover:bg-gray-900/80 transition-all duration-300 cursor-pointer"
                       onClick={() => handleCategoryClick(categoryIndex, eventIndex)}
                     >
                       <div className="relative">
@@ -285,17 +282,16 @@ const Events = () => {
                           alt={event.title}
                           className="w-full h-48 object-cover rounded-xl mb-4"
                         />
-                        <div className="absolute top-2 right-2 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">
+                        <div className="absolute top-2 right-2 bg-black/50 backdrop-blur-sm text-gray-200 px-3 py-1 rounded-full text-sm">
                           {event.registeredStudents.length}/{event.participantLimit} spots
                         </div>
                       </div>
 
-                      <h3 className="text-xl font-semibold text-white mb-2">{event.title}</h3>
+                      <h3 className="text-xl font-semibold text-gray-200 mb-2">{event.title}</h3>
 
-                      <div className={`space-y-3 transition-all duration-300 ${expandedCategory === `${categoryIndex}-${eventIndex}` ? 'block' : 'hidden'
-                        }`}>
-                        <p className="text-gray-300">{event.details.description}</p>
-                        <div className="grid grid-cols-2 gap-4 text-sm text-gray-400">
+                      <div className={`space-y-3 transition-all duration-300 ${expandedCategory === `${categoryIndex}-${eventIndex}` ? 'block' : 'hidden'}`}>
+                        <p className="text-gray-400">{event.details.description}</p>
+                        <div className="grid grid-cols-2 gap-4 text-sm text-gray-500">
                           <div>
                             <p className="font-medium">Venue</p>
                             <p>{event.details.venue}</p>
@@ -320,7 +316,7 @@ const Events = () => {
                               e.stopPropagation();
                               handleUnregisterClick(category._id, event);
                             }}
-                            className="w-full mt-4 bg-red-500 text-white px-4 py-2 rounded-xl hover:bg-red-600 transition-all duration-300"
+                            className="w-full mt-4 bg-gray-700 text-gray-200 px-4 py-2 rounded-xl hover:bg-gray-600 transition-all duration-300"
                           >
                             Unregister
                           </button>
@@ -332,8 +328,8 @@ const Events = () => {
                             }}
                             disabled={event.registeredStudents.length >= event.participantLimit}
                             className={`w-full mt-4 px-4 py-2 rounded-xl transition-all duration-300 ${event.registeredStudents.length >= event.participantLimit
-                              ? "bg-gray-500 cursor-not-allowed"
-                              : "bg-purple-500 hover:bg-purple-600 text-white"
+                                ? "bg-gray-700 cursor-not-allowed"
+                                : "bg-gray-700 hover:bg-gray-600 text-gray-200"
                               }`}
                           >
                             {event.registeredStudents.length >= event.participantLimit ? "Event Full" : "Register"}
