@@ -246,7 +246,7 @@ const Navbar = () => {
                 <NavLink
                   to="/register"
                   onClick={() => setIsOpen(false)}
-                  className="block w-full px-4 py-3 text-center text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all"
+                  className="block w-full px-4 py-3 text-center text-white  bg-gray-500 transition-all"
                 >
                   Register
                 </NavLink>
