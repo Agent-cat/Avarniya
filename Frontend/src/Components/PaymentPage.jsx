@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { setToken, setUser } from "../utils/auth";
-import qr from "../assets/upi_qr.png";
+import qr from "../assets/qr1.jpg";
 
 const PaymentPage = () => {
 

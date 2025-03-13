@@ -26,7 +26,7 @@ const Register = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [isEmailVerified, setIsEmailVerified] = useState(true);
+  const [isEmailVerified, setIsEmailVerified] = useState(false);
   const [showOTPInput, setShowOTPInput] = useState(false);
   const [otp, setOtp] = useState('');
   const [otpError, setOtpError] = useState('');
