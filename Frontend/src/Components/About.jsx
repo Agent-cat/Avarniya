@@ -26,24 +26,18 @@ const About = () => {
     const timelineData = [
         {
             year: 2024,
-            title: "A Global Showcase of Talent and Culture",
-            description: "In 2024, the festival saw an astounding 20,000 students from all corners of the world, including a growing number of international participants, making it one of the largest and most inclusive cultural events in India. The sheer scale and global participation reflect the fest's expanding reach and its significance as a major platform for young talent.",
-            image: "https://res.cloudinary.com/ds18h1q0k/image/upload/v1735379758/2024i_b6r9hy.jpg",
+            title: "Where Technology Meets Creativity",
+            description: "Avarniya, organized by the AI & DS branch at KL University, is more than a technical fest—it's a hub for innovation, hands-on learning, and collaboration. Through competitions, workshops, and cultural showcases, it bridges academics with real-world applications, fostering creativity and growth while shaping future-ready individuals.",
+            image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/xre0vwmleryhwwthlm1p",
         },
         {
             year: 2023,
-            title: "A Global Celebration of Talent and Culture",
+            title: "Shaping the Future Through Technology",
             description:
-                "In 2023, Surabhi reached new heights with over 15,000 students participating, including a significant number of international students from various countries. This made Surabhi not only one of the largest cultural fests in India but also a truly global celebration of youth, talent, and diversity.",
-            image: "https://res.cloudinary.com/ds18h1q0k/image/upload/v1735379758/2023i_dp6r0u.jpg",
+                " Shaping the Future Through Technology – a hub of innovation, learning, and collaboration, where students push boundaries, bridge academics with real-world impact, and embark on a transformative journey",
+            image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/a6j8qn5ggd6yqcjddti7",
         },
-        {
-            year: 2022,
-            title: "A National Celebration of Talent and Culture",
-            description:
-                "In 2022, Surabhi witnessed a remarkable participation of over 14,000 students, making it one of the largest and most anticipated cultural fests in the country.",
-            image: "https://res.cloudinary.com/ds18h1q0k/image/upload/v1735379758/2022i_ihzcmw.jpg",
-        },
+
     ];
 
     return (
@@ -82,12 +76,12 @@ const About = () => {
                         <div className="flex flex-col justify-center">
                             <h3 className="text-3xl font-poppins font-bold text-white mb-6">Our Vision</h3>
                             <p className="text-gray-300 leading-relaxed text-lg">
-                                To establish Surabhi as the premier global cultural festival that transcends boundaries, challenges artistic limits, and creates lasting impact. We envision a future where our festival serves as a catalyst for cultural exchange, artistic innovation, and the development of a worldwide community united by creativity and passion.
+                                Avarniya envisions fostering a culture of excellence and innovation by providing students with a transformative learning experience. The fest aims to be a hub for technical brilliance, creative exploration, and cultural inclusivity, ensuring every participant gets an opportunity to expand their knowledge, network with industry experts, and develop problem-solving skills. Through this, Avarniya aspires to become a leading university fest that bridges the gap between academics and real-world applications.
                             </p>
                         </div>
                     </motion.div>
 
-                    {/* Mission Section */}
+
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -97,7 +91,7 @@ const About = () => {
                         <div className="flex flex-col justify-center">
                             <h3 className="text-3xl font-poppins font-bold text-white mb-6">Our Mission</h3>
                             <p className="text-gray-300 leading-relaxed text-lg">
-                                To create a vibrant platform that celebrates cultural diversity, nurtures artistic talent, and fosters meaningful connections among students across the globe. Through Surabhi, we aim to provide an immersive experience that transforms passionate individuals into cultural ambassadors and future leaders in the arts.
+                                The mission of Avarniya is to create an engaging and dynamic platform where students can develop their technical and creative skills while embracing collaboration and teamwork. The fest is committed to delivering an unparalleled experience through competitions, workshops, and cultural showcases that empower students to think innovatively, push boundaries, and contribute meaningfully to society. By integrating technology, culture, and leadership, Avarniya seeks to shape future-ready individuals with a strong foundation in interdisciplinary learning.
                             </p>
                         </div>
                         <div className="relative overflow-hidden rounded-3xl">

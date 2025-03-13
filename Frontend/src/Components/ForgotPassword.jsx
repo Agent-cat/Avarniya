@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import intro3 from "../assets/intro3.mp4";
 import { useNavigate } from "react-router-dom";
 import ErrorPopup from "./ErrorPopup";
 
@@ -14,11 +13,6 @@ const ForgotPassword = () => {
     const [step, setStep] = useState(1); // 1: email, 2: OTP, 3: new password
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-
-    const handleVideoLoad = () => {
-        setIsVideoLoaded(true);
-    };
 
     const handleSendOTP = async (e) => {
         e.preventDefault();
@@ -96,33 +90,21 @@ const ForgotPassword = () => {
     return (
         <>
             {error && <ErrorPopup message={error} onClose={() => setError(null)} />}
-            <div className="min-h-screen relative flex items-center justify-center px-4">
-                <video
-                    autoPlay
-                    loop
-                    muted
-                    onLoadedData={handleVideoLoad}
-                    className="absolute top-0 left-0 w-full h-full object-cover z-0"
-                >
-                    <source src={intro3} type="video/mp4" />
-                </video>
-
-                <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-10"></div>
-
+            <div className="min-h-screen relative flex items-center justify-center px-4 bg-gradient-to-br from-gray-900 to-black">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: isVideoLoaded ? 1 : 0, y: isVideoLoaded ? 0 : 20 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="bg-white/10 p-8 rounded-lg backdrop-blur-sm w-full max-w-md relative z-20"
+                    className="bg-white/5 p-10 rounded-2xl backdrop-blur-lg w-full max-w-md relative z-20 border border-white/10 shadow-xl"
                 >
-                    <h2 className="text-3xl font-saint-carell text-white text-center mb-8">
+                    <h2 className="text-4xl font-montserrat text-white text-center mb-10 drop-shadow-lg font-bold tracking-wide">
                         Reset Password
                     </h2>
 
                     {step === 1 && (
                         <form onSubmit={handleSendOTP} className="space-y-6">
                             <div>
-                                <label htmlFor="email" className="block text-white mb-2">
+                                <label htmlFor="email" className="block text-white/90 mb-2 text-sm">
                                     Email
                                 </label>
                                 <input
@@ -130,7 +112,7 @@ const ForgotPassword = () => {
                                     id="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    className="w-full px-4 py-2 rounded bg-black border border-white/20 text-white focus:outline-none focus:border-white"
+                                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
                                     required
                                     disabled={isLoading}
                                 />
@@ -138,7 +120,7 @@ const ForgotPassword = () => {
                             <button
                                 type="submit"
                                 disabled={isLoading}
-                                className="w-full bg-purple-600 text-white py-2 rounded hover:bg-purple-700 transition-colors duration-300"
+                                className="w-full bg-purple-600 text-white py-3 rounded-xl hover:bg-purple-700 transition-all duration-300 shadow-lg hover:shadow-purple-500/20"
                             >
                                 {isLoading ? "Sending..." : "Send OTP"}
                             </button>
@@ -148,7 +130,7 @@ const ForgotPassword = () => {
                     {step === 2 && (
                         <form onSubmit={handleVerifyOTP} className="space-y-6">
                             <div>
-                                <label htmlFor="otp" className="block text-white mb-2">
+                                <label htmlFor="otp" className="block text-white/90 mb-2 text-sm">
                                     Enter OTP
                                 </label>
                                 <input
@@ -156,7 +138,7 @@ const ForgotPassword = () => {
                                     id="otp"
                                     value={otp}
                                     onChange={(e) => setOtp(e.target.value)}
-                                    className="w-full px-4 py-2 rounded bg-black border border-white/20 text-white focus:outline-none focus:border-white"
+                                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
                                     required
                                     maxLength={6}
                                 />
@@ -164,7 +146,7 @@ const ForgotPassword = () => {
                             <button
                                 type="submit"
                                 disabled={isLoading}
-                                className="w-full bg-purple-600 text-white py-2 rounded hover:bg-purple-700 transition-colors duration-300"
+                                className="w-full bg-purple-600 text-white py-3 rounded-xl hover:bg-purple-700 transition-all duration-300 shadow-lg hover:shadow-purple-500/20"
                             >
                                 Verify OTP
                             </button>
@@ -174,7 +156,7 @@ const ForgotPassword = () => {
                     {step === 3 && (
                         <form onSubmit={handleResetPassword} className="space-y-6">
                             <div>
-                                <label htmlFor="newPassword" className="block text-white mb-2">
+                                <label htmlFor="newPassword" className="block text-white/90 mb-2 text-sm">
                                     New Password
                                 </label>
                                 <input
@@ -182,12 +164,12 @@ const ForgotPassword = () => {
                                     id="newPassword"
                                     value={newPassword}
                                     onChange={(e) => setNewPassword(e.target.value)}
-                                    className="w-full px-4 py-2 rounded bg-black border border-white/20 text-white focus:outline-none focus:border-white"
+                                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
                                     required
                                 />
                             </div>
                             <div>
-                                <label htmlFor="confirmPassword" className="block text-white mb-2">
+                                <label htmlFor="confirmPassword" className="block text-white/90 mb-2 text-sm">
                                     Confirm Password
                                 </label>
                                 <input
@@ -195,14 +177,14 @@ const ForgotPassword = () => {
                                     id="confirmPassword"
                                     value={confirmPassword}
                                     onChange={(e) => setConfirmPassword(e.target.value)}
-                                    className="w-full px-4 py-2 rounded bg-black border border-white/20 text-white focus:outline-none focus:border-white"
+                                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
                                     required
                                 />
                             </div>
                             <button
                                 type="submit"
                                 disabled={isLoading}
-                                className="w-full bg-purple-600 text-white py-2 rounded hover:bg-purple-700 transition-colors duration-300"
+                                className="w-full bg-purple-600 text-white py-3 rounded-xl hover:bg-purple-700 transition-all duration-300 shadow-lg hover:shadow-purple-500/20"
                             >
                                 {isLoading ? "Resetting..." : "Reset Password"}
                             </button>
@@ -214,4 +196,4 @@ const ForgotPassword = () => {
     );
 };
 
-export default ForgotPassword; 
+export default ForgotPassword;

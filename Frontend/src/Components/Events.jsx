@@ -6,10 +6,6 @@ const Events = () => {
   const url = import.meta.env.VITE_API_URL;
   const [events, setEvents] = useState([]);
   const [expandedCategory, setExpandedCategory] = useState(null);
-  const [showRegisterPopup, setShowRegisterPopup] = useState(false);
-  const [acceptedTerms, setAcceptedTerms] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState(null);
-  const navigate = useNavigate();
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [error, setError] = useState(null);
   const [registrationStatus, setRegistrationStatus] = useState({
@@ -17,9 +13,10 @@ const Events = () => {
     error: null,
     success: false,
   });
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (showRegisterPopup || showSuccessPopup) {
+    if (showSuccessPopup) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -27,7 +24,7 @@ const Events = () => {
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [showRegisterPopup, showSuccessPopup]);
+  }, [showSuccessPopup]);
 
   const fetchEvents = async () => {
     try {
@@ -48,9 +45,46 @@ const Events = () => {
     setExpandedCategory(expandedCategory === categoryId ? null : categoryId);
   };
 
-  const handleRegisterClick = (categoryId, event) => {
-    setSelectedEvent({ ...event, categoryId });
-    setShowRegisterPopup(true);
+  const handleRegisterClick = async (categoryId, event) => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        navigate("/login");
+        return;
+      }
+
+      const response = await fetch(
+        `${url}/api/events/${categoryId}/events/${event._id}/register`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        if (data.conflictingEvent) {
+          setError(`Time Conflict: You are already registered for "${data.conflictingEvent.title}" at ${data.conflictingEvent.time} on ${data.conflictingEvent.date}`);
+        } else {
+          setError(data.message || "Failed to register for event");
+        }
+        return;
+      }
+
+      setShowSuccessPopup(true);
+      setError(null);
+      setRegistrationStatus(prev => ({
+        ...prev,
+        [event._id]: true
+      }));
+
+    } catch (error) {
+      setError("An error occurred while registering for the event");
+    }
   };
 
   const handleUnregisterClick = async (categoryId, event) => {
@@ -101,54 +135,6 @@ const Events = () => {
     }
   };
 
-  const handleRegistrationSubmit = async () => {
-    if (!acceptedTerms) {
-      setError("Please accept the terms and conditions");
-      return;
-    }
-
-    try {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        navigate("/login");
-        return;
-      }
-
-      const response = await fetch(
-        `${url}/api/events/${selectedEvent.categoryId}/events/${selectedEvent._id}/register`,
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          },
-        }
-      );
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        if (data.conflictingEvent) {
-          setError(`Time Conflict: You are already registered for "${data.conflictingEvent.title}" at ${data.conflictingEvent.time} on ${data.conflictingEvent.date}`);
-        } else {
-          setError(data.message || "Failed to register for event");
-        }
-        return;
-      }
-
-      setShowRegisterPopup(false);
-      setShowSuccessPopup(true);
-      setError(null);
-      setRegistrationStatus(prev => ({
-        ...prev,
-        [selectedEvent._id]: true
-      }));
-
-    } catch (error) {
-      setError("An error occurred while registering for the event");
-    }
-  };
-
   const SuccessPopup = () => (
     <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50">
       <div className="bg-gray-900 rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl border border-gray-700">
@@ -166,85 +152,6 @@ const Events = () => {
           >
             Got it!
           </button>
-        </div>
-      </div>
-    </div>
-  );
-
-  const RegisterPopup = () => (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50">
-      <div className="bg-gray-900 rounded-3xl p-8 max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto shadow-2xl border border-gray-700">
-        <h3 className="text-3xl font-bold text-gray-200 mb-6">
-          {selectedEvent?.title}
-        </h3>
-
-        <div className="space-y-6">
-          <div className="bg-gray-800 rounded-2xl p-6">
-            <h4 className="text-xl font-semibold text-gray-200 mb-4">
-              Terms and Conditions
-            </h4>
-            <div className="space-y-3 text-gray-400">
-              {selectedEvent?.termsandconditions ? (
-                selectedEvent.termsandconditions.split('.').filter(term => term.trim()).map((term, index) => (
-                  <p key={index} className="flex items-start">
-                    <span className="mr-2">•</span>
-                    {term.trim()}
-                  </p>
-                ))
-              ) : (
-                <>
-                  <p className="flex items-start"><span className="mr-2">•</span>Follow all event guidelines</p>
-                  <p className="flex items-start"><span className="mr-2">•</span>Arrive 30 minutes early</p>
-                  <p className="flex items-start"><span className="mr-2">•</span>Bring valid ID</p>
-                  <p className="flex items-start"><span className="mr-2">•</span>Judges' decisions are final</p>
-                  <p className="flex items-start"><span className="mr-2">•</span>No misbehavior tolerated</p>
-                </>
-              )}
-            </div>
-          </div>
-
-          <label className="flex items-center gap-3 cursor-pointer group">
-            <input
-              type="checkbox"
-              checked={acceptedTerms}
-              onChange={(e) => setAcceptedTerms(e.target.checked)}
-              className="w-5 h-5 rounded border-gray-600 text-gray-500 focus:ring-gray-500"
-            />
-            <span className="text-gray-400 group-hover:text-gray-200 transition-colors">
-              I accept the terms and conditions
-            </span>
-          </label>
-
-          {error && (
-            <div className="bg-red-900/20 border border-red-500/20 rounded-xl p-4 text-red-400">
-              {error}
-            </div>
-          )}
-
-          <div className="flex gap-4">
-            <button
-              onClick={handleRegistrationSubmit}
-              disabled={!acceptedTerms}
-              className={`flex-1 px-6 py-3 rounded-xl font-medium transition-all duration-300
-                ${!acceptedTerms
-                  ? "bg-gray-700 text-gray-500 cursor-not-allowed"
-                  : "bg-gray-700 text-gray-200 hover:bg-gray-600"
-                }`}
-            >
-              Confirm
-            </button>
-            <button
-              onClick={() => {
-                setShowRegisterPopup(false);
-                setSelectedEvent(null);
-                setAcceptedTerms(false);
-                setError(null);
-              }}
-              className="px-6 py-3 rounded-xl font-medium border-2 border-gray-700 text-gray-400 hover:bg-gray-800 transition-all duration-300"
-            >
-              Cancel
-            </button>
-          </div>
         </div>
       </div>
     </div>
@@ -328,8 +235,8 @@ const Events = () => {
                             }}
                             disabled={event.registeredStudents.length >= event.participantLimit}
                             className={`w-full mt-4 px-4 py-2 rounded-xl transition-all duration-300 ${event.registeredStudents.length >= event.participantLimit
-                                ? "bg-gray-700 cursor-not-allowed"
-                                : "bg-gray-700 hover:bg-gray-600 text-gray-200"
+                              ? "bg-gray-700 cursor-not-allowed"
+                              : "bg-gray-700 hover:bg-gray-600 text-gray-200"
                               }`}
                           >
                             {event.registeredStudents.length >= event.participantLimit ? "Event Full" : "Register"}
@@ -345,7 +252,6 @@ const Events = () => {
         )}
       </div>
 
-      {showRegisterPopup && <RegisterPopup />}
       {showSuccessPopup && <SuccessPopup />}
     </div>
   );

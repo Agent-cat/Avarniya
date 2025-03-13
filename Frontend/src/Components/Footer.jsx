@@ -103,6 +103,10 @@ const Footer = () => {
             <a href="https://www.linkedin.com/in/vishnu-vardhan-a8a5b92a1/" target="_blank" className="text-white hover:text-gray-300">
               Vishnu Vardhan
             </a>
+            {" "}&{" "}
+            <a href="https://www.linkedin.com/in/anubothu_aravind/" target="_blank" className="text-white hover:text-gray-300">
+              Aanubothu Aravind
+            </a>
           </p>
         </div>
       </div>

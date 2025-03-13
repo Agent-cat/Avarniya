@@ -4,11 +4,7 @@ import { motion, useScroll } from "framer-motion";
 import { FaPlus, FaMinus } from "react-icons/fa";
 
 import logo from '../assets/Avarniya.png'
-
-
-
 import partner from "../assets/partner.jpg";
-
 
 const faqs = [
   {
@@ -49,7 +45,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    const targetDate = new Date('2025-03-10T00:00:00+05:30');
+    const targetDate = new Date('2025-03-21T00:00:00+05:30');
 
     const calculateTimeLeft = () => {
       const now = new Date();
@@ -82,16 +78,27 @@ const Home = () => {
           className="relative min-h-screen flex items-center justify-center bg-black p-4"
           ref={containerRef}
         >
-          <div className="absolute inset-0 bg-black" />
+          <div className="absolute inset-0 overflow-hidden">
+            <video
+              autoPlay
+              loop
+              muted
+              className="absolute w-full h-full object-cover opacity-50"
+            >
+              <source src="https://res.cloudinary.com/dhsw1nyfx/video/upload/f_auto:video,q_auto/IMG_0478_ioc1du" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <div className="absolute inset-0" />
+          </div>
 
-          <div className="flex flex-col gap-11">
+          <div className="flex flex-col gap-11 relative z-10">
             <motion.img
               src={logo}
               alt="Avarniya"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="w-80 object-contain sm:w-64 md:w-96 z-10"
+              className="w-80 object-contain sm:w-64 md:w-96"
             />
           </div>
         </div>
@@ -104,7 +111,7 @@ const Home = () => {
               transition={{ duration: 0.5 }}
               className="grid grid-cols-2 md:grid-cols-4 gap-8 z-50"
             >
-              {/* Days Circle */}
+
               <div className="relative">
                 <svg className="w-full h-full" viewBox="0 0 100 100">
                   <circle
@@ -324,11 +331,11 @@ const Home = () => {
               className="text-sm sm:text-base md:text-lg leading-relaxed text-gray-300 z-50"
             >
               <p className="flex items-center justify-center text-center">
-                Surabhi 2025 is a two-day International Cultural fest hosted by KL University, celebrating student creativity through music, dance, drama, and artistic expression. Featuring renowned artists alongside exceptional student talent, the event showcases diversity in a vibrant and supportive environment. This year, the fest is focused on overcoming past challenges to deliver an enriched and memorable experience for both participants and attendees.
+                Avarniya is a technical fest organized by the AIDS branch at KL University in Vijayawada. This event is a platform for students to showcase their technical skills, participate in various competitions, and engage in workshops and seminars. The fest aims to foster innovation, creativity, and collaboration among students.
               </p>
             </motion.div>
           </div>
-          <button className="px-3 py-2 bg-white text-black mt-6 w-40 rounded-md">More About us</button>
+          <Link to='/about' className="px-3 text-center py-2 bg-white text-black mt-6 w-40 rounded-md">More About us</Link>
         </div>
 
 
