@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { getUser, removeToken, removeUser } from "../utils/auth";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/surabhi.png";
-import kl from "../assets/kl.png";
+import kl from "../assets/logo.png";
 import { IoClose } from "react-icons/io5"; // Added IoClose icon
 
 const Navbar = () => {
@@ -143,7 +143,7 @@ const Navbar = () => {
       <div className=" mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center space-x-3">
-            <img src={kl} alt="KL University" className="h-8 w-auto" />
+            <img src={kl} alt="KL University" className="h-20 w-20" />
           </Link>
 
           <div className="hidden lg:flex items-center space-x-8">

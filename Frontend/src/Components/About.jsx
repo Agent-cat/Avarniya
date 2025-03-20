@@ -25,16 +25,16 @@ const About = () => {
 
     const timelineData = [
         {
-            year: 2024,
-            title: "Where Technology Meets Creativity",
-            description: "Avarniya, organized by the AI & DS branch at KL University, is more than a technical fest—it's a hub for innovation, hands-on learning, and collaboration. Through competitions, workshops, and cultural showcases, it bridges academics with real-world applications, fostering creativity and growth while shaping future-ready individuals.",
+            year: 2025,
+            title: "Expanding Horizons in AI & ML",
+            description: "Building on our 2024 foundation, Intelligentsia Club continues to drive AI and ML innovation in 2025. With advanced projects, interactive workshops, and deeper industry collaborations, we empower students to push boundaries and create impactful solutions for the future",
             image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/xre0vwmleryhwwthlm1p",
         },
         {
-            year: 2023,
-            title: "Shaping the Future Through Technology",
+            year: 2024,
+            title: "Pioneering the Future of AI & ML ",
             description:
-                " Shaping the Future Through Technology – a hub of innovation, learning, and collaboration, where students push boundaries, bridge academics with real-world impact, and embark on a transformative journey",
+                " In 2024, Intelligentsia Club advanced AI and ML learning through innovation, hands-on projects, and collaboration. This year marked a key step in shaping intelligent systems and real-world solutions.",
             image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/a6j8qn5ggd6yqcjddti7",
         },
 
@@ -76,7 +76,7 @@ const About = () => {
                         <div className="flex flex-col justify-center">
                             <h3 className="text-3xl font-poppins font-bold text-white mb-6">Our Vision</h3>
                             <p className="text-gray-300 leading-relaxed text-lg">
-                                Avarniya envisions fostering a culture of excellence and innovation by providing students with a transformative learning experience. The fest aims to be a hub for technical brilliance, creative exploration, and cultural inclusivity, ensuring every participant gets an opportunity to expand their knowledge, network with industry experts, and develop problem-solving skills. Through this, Avarniya aspires to become a leading university fest that bridges the gap between academics and real-world applications.
+                            Intelligentsia Club envisions a future where students harness the power of AI and ML to drive innovation and solve real-world challenges. We aim to create a collaborative ecosystem that nurtures creativity, critical thinking, and technical excellence. Through hands-on projects, interactive workshops, and knowledge-sharing, we strive to bridge the gap between academic learning and industry applications. Our goal is to empower the next generation of AI enthusiasts to make meaningful contributions to technology and society.
                             </p>
                         </div>
                     </motion.div>
@@ -91,7 +91,7 @@ const About = () => {
                         <div className="flex flex-col justify-center">
                             <h3 className="text-3xl font-poppins font-bold text-white mb-6">Our Mission</h3>
                             <p className="text-gray-300 leading-relaxed text-lg">
-                                The mission of Avarniya is to create an engaging and dynamic platform where students can develop their technical and creative skills while embracing collaboration and teamwork. The fest is committed to delivering an unparalleled experience through competitions, workshops, and cultural showcases that empower students to think innovatively, push boundaries, and contribute meaningfully to society. By integrating technology, culture, and leadership, Avarniya seeks to shape future-ready individuals with a strong foundation in interdisciplinary learning.
+                            Intelligentsia Club is committed to fostering a dynamic learning environment for AI and ML enthusiasts. Our mission is to empower students through hands-on projects, interactive workshops, and collaborative initiatives that bridge theory and real-world applications. We strive to cultivate innovation, critical thinking, and technical expertise while encouraging ethical AI development. By providing mentorship, networking opportunities, and industry exposure, we aim to equip our members with the skills needed to shape the future of AI and drive impactful change in society.
                             </p>
                         </div>
                         <div className="relative overflow-hidden rounded-3xl">
@@ -104,9 +104,38 @@ const About = () => {
                             />
                         </div>
                     </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="grid md:grid-cols-2 gap-12 mb-20"
+                    >
+                        <div className="relative overflow-hidden rounded-3xl">
+                            <motion.img
+                                whileHover={{ scale: 1.05 }}
+                                transition={{ duration: 0.3 }}
+                                src="https://res.cloudinary.com/ds18h1q0k/image/upload/v1735379758/about.jpg"
+                                alt="About Us"
+                                className="w-full h-full object-cover rounded-3xl"
+                            />
+                        </div>
+                        <div className="flex flex-col justify-center">
+                            <h3 className="text-3xl font-poppins font-bold text-white mb-6">What we do</h3>
+                            <p className="text-gray-300 leading-relaxed text-lg">
+                            <ol>
+                              <li>• Hands-on projects: Members work on real-world AI/ML projects, gaining practical experience and building their skills.</li>
+                              <li>• Workshops: We conduct workshops on AI/ML topics, covering both theoretical concepts and practical applications.</li>
+                              <li>• Collaborative initiatives: We collaborate with other clubs and organizations to tackle complex problems and develop innovative solutions.</li>
+                              <li>• Mentorship: We provide mentorship to help members grow their skills and knowledge.</li>
+                              <li>• Networking: We connect members with industry professionals and potential employers.</li>
+                            </ol>
+                            </p>
+                        </div>
+                    </motion.div>
+
                 </div>
 
-                {/* Timeline Section */}
+               
                 <motion.h2
                     initial={{ opacity: 0, y: -30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -166,67 +195,7 @@ const About = () => {
                     ))}
                 </div>
 
-                {/* Our Clubs Section */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="mt-32"
-                >
-                    <h2 className="text-5xl md:text-7xl font-poppins text-center text-white bg-clip-text text-transparent mb-16">
-                        Our Clubs
-                    </h2>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <motion.div
-                            whileHover={{ scale: 1.05 }}
-                            className="bg-black backdrop-blur-sm p-6 rounded-3xl border transition-all duration-300"
-                        >
-                            <img
-                                src="https://res.cloudinary.com/ds18h1q0k/image/upload/v1735379758/club1.jpg"
-                                alt="Dance Club"
-                                className="w-full h-48 object-cover rounded-2xl mb-4"
-                            />
-                            <h3 className="text-xl font-poppins font-bold text-gray-400 mb-2">Dance Club</h3>
-                            <p className="text-gray-300 mb-4">Experience the rhythm and grace of various dance forms.</p>
-                            <button className="bg-gray-600 text-white px-6 py-2 rounded-full hover:bg-gray-700 transition-all">
-                                View us
-                            </button>
-                        </motion.div>
-
-                        <motion.div
-                            whileHover={{ scale: 1.05 }}
-                            className="bg-black backdrop-blur-sm p-6 rounded-3xl border transition-all duration-300"
-                        >
-                            <img
-                                src="https://res.cloudinary.com/ds18h1q0k/image/upload/v1735379758/club2.jpg"
-                                alt="Music Club"
-                                className="w-full h-48 object-cover rounded-2xl mb-4"
-                            />
-                            <h3 className="text-xl font-poppins font-bold text-gray-400 mb-2">Music Club</h3>
-                            <p className="text-gray-300 mb-4">Discover your musical talents with our diverse music programs.</p>
-                            <button className="bg-gray-600 text-white px-6 py-2 rounded-full hover:bg-gray-700 transition-all">
-                                View us
-                            </button>
-                        </motion.div>
-
-                        <motion.div
-                            whileHover={{ scale: 1.05 }}
-                            className="bg-black backdrop-blur-sm p-6 rounded-3xl border transition-all duration-300"
-                        >
-                            <img
-                                src="https://res.cloudinary.com/ds18h1q0k/image/upload/v1735379758/club3.jpg"
-                                alt="Drama Club"
-                                className="w-full h-48 object-cover rounded-2xl mb-4"
-                            />
-                            <h3 className="text-xl font-poppins font-bold text-gray-400 mb-2">Drama Club</h3>
-                            <p className="text-gray-300 mb-4">Express yourself through the art of theater and performance.</p>
-                            <button className="bg-gray-600 text-white px-6 py-2 rounded-full hover:bg-gray-700 transition-all">
-                                View us
-                            </button>
-                        </motion.div>
-                    </div>
-                </motion.div>
+                
             </div>
         </div>
     );

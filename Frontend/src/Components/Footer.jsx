@@ -10,10 +10,10 @@ const Footer = () => {
           {/* About Section */}
           <div className="space-y-6">
             <h2 className="text-4xl font-saint-carell text-white">
-              Avarniya
+              Intelligentsia
             </h2>
             <p className="text-white leading-relaxed">
-              Experience the magic of cultural arts through mesmerizing performances at KL University's premier international festival.
+            Intelligentsia Club fosters innovation in AI and ML through hands-on projects, workshops, and collaboration. Join us to explore, learn, and shape the future of technology.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-white hover:text-gray-300 transition-colors">
@@ -65,11 +65,11 @@ const Footer = () => {
               <li className="flex items-center space-x-3 text-white hover:text-gray-300 transition-colors cursor-pointer"
                 onClick={() => window.open("mailto:Avarniya@kluniversity.in", "_self")}>
                 <MdEmail size={20} />
-                <span>Avarniya@kluniversity.in</span>
+                <span>intelligentsia@kluniversity.in</span>
               </li>
               <li className="flex items-center space-x-3 text-white">
                 <MdPhone size={20} />
-                <span>+91 6309466281</span>
+                <span>+91 7032894189</span>
               </li>
               <li className="flex items-center space-x-3 text-white">
                 <MdLocationOn size={20} />
@@ -93,7 +93,7 @@ const Footer = () => {
 
         <div className="border-t border-white/30 mt-12 pt-8 text-center">
           <p className="text-white">
-            &copy; {new Date().getFullYear()} Avarniya Festival, KL University. All rights reserved.
+            &copy; {new Date().getFullYear()} Intelligentsia Club, All rights reserved.
             <br />
             Developed by{" "}
             <a href="https://www.linkedin.com/in/vijay-nandyala/" target="_blank" className="text-white hover:text-gray-300">
