@@ -28,14 +28,14 @@ const About = () => {
             year: 2025,
             title: "Expanding Horizons in AI & ML",
             description: "Building on our 2024 foundation, Intelligentsia Club continues to drive AI and ML innovation in 2025. With advanced projects, interactive workshops, and deeper industry collaborations, we empower students to push boundaries and create impactful solutions for the future",
-            image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/xre0vwmleryhwwthlm1p",
+            image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/a55keae3wh2tojsizkkc",
         },
         {
             year: 2024,
             title: "Pioneering the Future of AI & ML ",
             description:
                 " In 2024, Intelligentsia Club advanced AI and ML learning through innovation, hands-on projects, and collaboration. This year marked a key step in shaping intelligent systems and real-world solutions.",
-            image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/a6j8qn5ggd6yqcjddti7",
+            image: "https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/xhruyvk56dsvclrko3ey",
         },
 
     ];
@@ -68,7 +68,7 @@ const About = () => {
                             <motion.img
                                 whileHover={{ scale: 1.05 }}
                                 transition={{ duration: 0.3 }}
-                                src="https://res.cloudinary.com/ds18h1q0k/image/upload/v1735379758/about.jpg"
+                                src="https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/q4vx1vxydqhwiogwhufv"
                                 alt="About Us"
                                 className="w-full h-full object-cover rounded-3xl"
                             />
@@ -98,7 +98,7 @@ const About = () => {
                             <motion.img
                                 whileHover={{ scale: 1.05 }}
                                 transition={{ duration: 0.3 }}
-                                src="https://res.cloudinary.com/ds18h1q0k/image/upload/v1735379758/mission.jpg"
+                                src="https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/nsktmdhwjrdepd4qchso"
                                 alt="Our Mission"
                                 className="w-full h-full object-cover rounded-3xl"
                             />
@@ -108,13 +108,13 @@ const About = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="grid md:grid-cols-2 gap-12 mb-20"
+                        className="grid md:grid-cols-2 mt-20 gap-12 mb-20"
                     >
                         <div className="relative overflow-hidden rounded-3xl">
                             <motion.img
                                 whileHover={{ scale: 1.05 }}
                                 transition={{ duration: 0.3 }}
-                                src="https://res.cloudinary.com/ds18h1q0k/image/upload/v1735379758/about.jpg"
+                                src="https://res.cloudinary.com/vishnu2005/image/upload/f_auto,q_auto/ifx4iellu2eujgbc56bz"
                                 alt="About Us"
                                 className="w-full h-full object-cover rounded-3xl"
                             />

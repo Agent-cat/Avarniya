@@ -8,7 +8,6 @@ import eventRoutes from "./routes/event.routes.js";
 
 const app = express();
 
-// Basic middleware
 app.use(cors({
   origin: '*',
 

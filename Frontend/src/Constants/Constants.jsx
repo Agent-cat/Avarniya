@@ -7,6 +7,10 @@ export const navLinks = [
     title: "About",
     to: "/about",
   },
+  {
+    title: "Team",
+    to: "/team",
+  },
 
   {
     title: "Events",
