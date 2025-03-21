@@ -91,13 +91,13 @@ const Home = () => {
             <div className="absolute inset-0" />
           </div>
 
-          <div className="flex  gap-96 items-center justify-center relative z-10">
+          <div className="md:flex md:flex-row flex flex-col  gap-10  md:gap-96 items-center justify-center relative z-10">
             <div className="flex flex-col w-full items-start">
-              <h1 className="text-white text-6xl font-bold">
+              <h1 className="text-white md:text-6xl text-4xl font-bold">
                 INTELLIGENTSIA
 
               </h1>
-              <h2 className="text-white text-xl font-bold">
+              <h2 className="text-white text-center ml-16 md:ml-0 md:text-left text-xl font-bold">
 Technology Club</h2>
             </div>
             <motion.img

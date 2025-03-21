@@ -1,6 +1,6 @@
 import React from "react";
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaTelegram } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -16,16 +16,14 @@ const Footer = () => {
             Intelligentsia Club fosters innovation in AI and ML through hands-on projects, workshops, and collaboration. Join us to explore, learn, and shape the future of technology.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-white hover:text-gray-300 transition-colors">
-                <FaFacebook size={24} />
+              <a href="https://t.me/intelligentsiacommunity" className="text-white hover:text-gray-300 transition-colors">
+                <FaTelegram size={24} />
               </a>
-              <a href="#" className="text-white hover:text-gray-300 transition-colors">
-                <FaTwitter size={24} />
-              </a>
-              <a href="#" className="text-white hover:text-gray-300 transition-colors">
+             
+              <a href="https://www.instagram.com/intelligentsia_klef/" className="text-white hover:text-gray-300 transition-colors">
                 <FaInstagram size={24} />
               </a>
-              <a href="#" className="text-white hover:text-gray-300 transition-colors">
+              <a href="https://www.linkedin.com/company/intelligentsia-club/" className="text-white hover:text-gray-300 transition-colors">
                 <FaLinkedin size={24} />
               </a>
             </div>
@@ -46,8 +44,8 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="/gallery" className="text-white hover:text-gray-300 transition-colors flex items-center">
-                  <span className="mr-2">→</span> Gallery
+                <a href="/team" className="text-white hover:text-gray-300 transition-colors flex items-center">
+                  <span className="mr-2">→</span> Team
                 </a>
               </li>
               <li>
@@ -63,7 +61,7 @@ const Footer = () => {
             <h3 className="text-xl font-bold text-white">Contact Us</h3>
             <ul className="space-y-4">
               <li className="flex items-center space-x-3 text-white hover:text-gray-300 transition-colors cursor-pointer"
-                onClick={() => window.open("mailto:Avarniya@kluniversity.in", "_self")}>
+                onClick={() => window.open("mailto:intelligentsia@kluniversity.in", "_self")}>
                 <MdEmail size={20} />
                 <span>intelligentsia@kluniversity.in</span>
               </li>
