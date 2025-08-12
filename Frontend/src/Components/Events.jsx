@@ -2,71 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-// Add this state for manual past events
-const [pastEvents] = useState([
-  {
-    categoryName: "Past Events",
-    Events: [
-      {
-        _id: "past1",
-        title: "KICK START TO INTELLIGENTSIA",
-        image: "https://res.cloudinary.com/doqdj0naa/image/upload/v1754849244/lfwjho36fvuxenh6e36p.jpg", // Replace with actual image
-        registeredStudents: [], // Or static count
-        participantLimit: 50,
-        details: {
-          description: "On September 21, 2024, the club hosted an event on technology, creativity, and collaboration, inspiring participants to innovate.",
-          venue: "Tech Hall",
-          date: "2024-09-21",
-          startTime: "10:00 AM",
-          endTime: "12:00 PM",
-        },
-      },
-      {
-        _id: "past2",
-        title: "Innovative Medicine: AI Edition",
-        image: "https://res.cloudinary.com/doqdj0naa/image/upload/v1754849246/spmg3rflhobxhozqovkb.jpg",
-        registeredStudents: [],
-        participantLimit: 30,
-        details: {
-          description: "On September 27, 2024, join us for a club-hosted event exploring AI’s transformative role in medicine, featuring keynotes, panels, and networking with industry and healthcare experts.",
-          venue: "Innovation Center",
-          date: "2024-04-22",
-          startTime: "2:00 PM",
-          endTime: "5:00 PM",
-        },
-      },
-      {
-        _id: "past3",
-        title: "Innovative Medicine: AI Edition",
-        image: "https://res.cloudinary.com/doqdj0naa/image/upload/v1754849246/spmg3rflhobxhozqovkb.jpg",
-        registeredStudents: [],
-        participantLimit: 30,
-        details: {
-          description: "On September 27, 2024, join us for a club-hosted event exploring AI’s transformative role in medicine, featuring keynotes, panels, and networking with industry and healthcare experts.",
-          venue: "Innovation Center",
-          date: "2024-04-22",
-          startTime: "2:00 PM",
-          endTime: "5:00 PM",
-        },
-      },
-      {
-        _id: "past4",
-        title: "Innovative Medicine: AI Edition",
-        image: "https://res.cloudinary.com/doqdj0naa/image/upload/v1754849246/spmg3rflhobxhozqovkb.jpg",
-        registeredStudents: [],
-        participantLimit: 30,
-        details: {
-          description: "On September 27, 2024, join us for a club-hosted event exploring AI’s transformative role in medicine, featuring keynotes, panels, and networking with industry and healthcare experts.",
-          venue: "Innovation Center",
-          date: "2024-04-22",
-          startTime: "2:00 PM",
-          endTime: "5:00 PM",
-        },
-      },
-    ],
-  },
-]);
-
 const Events = () => {
   const url = import.meta.env.VITE_API_URL;
   const [events, setEvents] = useState([]);
@@ -319,65 +254,7 @@ const Events = () => {
 
       {showSuccessPopup && <SuccessPopup />}
     </div>
-
-    
   );
 };
-{/* Past Events Section */}
-<div className="space-y-8 mt-20">
-  {pastEvents.map((category, categoryIndex) => (
-    <div key={`past-${categoryIndex}`} className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-400 border-b-2 border-gray-700 pb-2">
-        {category.categoryName}
-      </h2>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {category.Events?.map((event, eventIndex) => (
-          <div
-            key={eventIndex}
-            className="bg-gray-900/50 backdrop-blur-lg rounded-2xl p-6 hover:bg-gray-900/80 transition-all duration-300 cursor-pointer"
-            onClick={() => handleCategoryClick(`past-${categoryIndex}`, eventIndex)}
-          >
-            <div className="relative">
-              <img
-                src={event.image}
-                alt={event.title}
-                className="w-full h-48 object-cover rounded-xl mb-4"
-              />
-              <div className="absolute top-2 right-2 bg-black/50 backdrop-blur-sm text-gray-200 px-3 py-1 rounded-full text-sm">
-                {event.registeredStudents.length}/{event.participantLimit} spots
-              </div>
-            </div>
-
-            <h3 className="text-xl font-semibold text-gray-200 mb-2">{event.title}</h3>
-
-            <div className={`space-y-3 transition-all duration-300 ${expandedCategory === `past-${categoryIndex}-${eventIndex}` ? 'block' : 'hidden'}`}>
-              <p className="text-gray-400">{event.details.description}</p>
-              <div className="grid grid-cols-2 gap-4 text-sm text-gray-500">
-                <div>
-                  <p className="font-medium">Venue</p>
-                  <p>{event.details.venue}</p>
-                </div>
-                <div>
-                  <p className="font-medium">Date</p>
-                  <p>{event.details.date}</p>
-                </div>
-                <div>
-                  <p className="font-medium">Start Time</p>
-                  <p>{event.details.startTime}</p>
-                </div>
-                <div>
-                  <p className="font-medium">End Time</p>
-                  <p>{event.details.endTime}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  ))}
-</div>
-
 
 export default Events;
