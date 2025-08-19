@@ -28,7 +28,7 @@ const Events = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await axios.get(${url}/api/events);
+      const response = await axios.get(`${url}/api/events`);
       setEvents(response.data);
     } catch (error) {
       console.error("Error fetching events:", error);
@@ -41,7 +41,7 @@ const Events = () => {
   }, []);
 
   const handleCategoryClick = (chartIndex, catIndex) => {
-    const categoryId = ${chartIndex}-${catIndex};
+    const categoryId = `${chartIndex}-${catIndex}`;
     setExpandedCategory(expandedCategory === categoryId ? null : categoryId);
   };
 
@@ -54,21 +54,20 @@ const Events = () => {
       }
 
       const response = await fetch(
-        ${url}/api/events/${categoryId}/events/${event._id}/register,
+        `${url}/api/events/${categoryId}/events/${event._id}/register`,
         {
           method: "POST",
           headers: {
-            Authorization: Bearer ${token},
+            Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'
           },
         }
       );
-
       const data = await response.json();
 
       if (!response.ok) {
         if (data.conflictingEvent) {
-          setError(Time Conflict: You are already registered for "${data.conflictingEvent.title}" at ${data.conflictingEvent.time} on ${data.conflictingEvent.date});
+          setError(`Time Conflict: You are already registered for "${data.conflictingEvent.title}" at ${data.conflictingEvent.time} on ${data.conflictingEvent.date}`);
         } else {
           setError(data.message || "Failed to register for event");
         }
@@ -95,15 +94,16 @@ const Events = () => {
         return;
       }
 
-      const response = await fetch(
-        ${url}/api/events/${categoryId}/events/${event._id}/unregister,
-        {
-          method: "DELETE",
-          headers: {
-            Authorization: Bearer ${token},
-          },
-        }
-      );
+     
+        const response = await fetch(
+          `${url}/api/events/${categoryId}/events/${event._id}/unregister`,
+          {
+            method: "DELETE",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
       if (!response.ok) {
         const data = await response.json();
@@ -196,7 +196,7 @@ const Events = () => {
 
                       <h3 className="text-xl font-semibold text-gray-200 mb-2">{event.title}</h3>
 
-                      <div className={`space-y-3 transition-all duration-300 ${expandedCategory === ${categoryIndex}-${eventIndex} ? 'block' : 'hidden'}`}>
+                      <div className={`space-y-3 transition-all duration-300 ${expandedCategory === (categoryIndex + '-' + eventIndex) ? 'block' : 'hidden'}`}>
                         <p className="text-gray-400">{event.details.description}</p>
                         <div className="grid grid-cols-2 gap-4 text-sm text-gray-500">
                           <div>
