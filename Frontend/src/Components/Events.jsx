@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Events = () => {
   const url = import.meta.env.VITE_API_URL;
   const [events, setEvents] = useState([]);
+  const [eventView, setEventView] = useState("current"); // 'current' or 'past'
   const [expandedCategory, setExpandedCategory] = useState(null);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [error, setError] = useState(null);
@@ -135,6 +136,44 @@ const Events = () => {
     }
   };
 
+  const filterEvents = (events) => {
+    if (!Array.isArray(events)) {
+      return { pastEvents: [], currentEvents: [] };
+    }
+    const now = new Date();
+    const pastEvents = [];
+    const currentEvents = [];
+
+    events.forEach(category => {
+      const pastCategory = { ...category, Events: [] };
+      const currentCategory = { ...category, Events: [] };
+
+      if (Array.isArray(category.Events)) {
+        category.Events.forEach(event => {
+          // Assuming date is in a format that can be parsed, and endTime is HH:mm
+          const eventEndTime = new Date(`${event.details.date} ${event.details.endTime}`);
+          if (eventEndTime < now) {
+            pastCategory.Events.push(event);
+          } else {
+            currentCategory.Events.push(event);
+          }
+        });
+      }
+
+      if (pastCategory.Events.length > 0) {
+        pastEvents.push(pastCategory);
+      }
+      if (currentCategory.Events.length > 0) {
+        currentEvents.push(currentCategory);
+      }
+    });
+
+    return { pastEvents, currentEvents };
+  };
+
+  const { pastEvents, currentEvents } = filterEvents(events);
+  const displayedEvents = eventView === 'current' ? currentEvents : pastEvents;
+
   const SuccessPopup = () => (
     <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50">
       <div className="bg-gray-900 rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl border border-gray-700">
@@ -160,9 +199,34 @@ const Events = () => {
   return (
     <div className="min-h-screen bg-black">
       <div className="max-w-7xl mx-auto px-4 py-16">
-        <h1 className="text-6xl font-bold text-center text-gray-200 mb-20 mt-16">
+        <h1 className="text-6xl font-bold text-center text-gray-200 mb-12 mt-16">
           Our Events
         </h1>
+
+        <div className="flex justify-center mb-12">
+          <div className="flex rounded-full bg-gray-800 p-1">
+            <button
+              onClick={() => setEventView("current")}
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
+                eventView === "current"
+                  ? "bg-gray-700 text-white"
+                  : "text-gray-400 hover:bg-gray-700/50"
+              }`}
+            >
+              Current Events
+            </button>
+            <button
+              onClick={() => setEventView("past")}
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
+                eventView === "past"
+                  ? "bg-gray-700 text-white"
+                  : "text-gray-400 hover:bg-gray-700/50"
+              }`}
+            >
+              Past Events
+            </button>
+          </div>
+        </div>
 
         {error ? (
           <div className="text-red-400 text-center p-6 bg-red-900/10 rounded-2xl">
@@ -170,7 +234,7 @@ const Events = () => {
           </div>
         ) : (
           <div className="space-y-8">
-            {events.map((category, categoryIndex) => (
+            {displayedEvents.map((category, categoryIndex) => (
               <div key={categoryIndex} className="space-y-6">
                 <h2 className="text-2xl font-bold text-gray-400 border-b-2 border-gray-700 pb-2">
                   {category.categoryName}
