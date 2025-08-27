@@ -251,7 +251,7 @@ const Events = () => {
                         <img
                           src={event.image}
                           alt={event.title}
-                          className="w-full h-48 object-cover rounded-xl mb-4"
+                          className="w-full aspect-square object-cover rounded-xl mb-4"
                         />
                         <div className="absolute top-2 right-2 bg-black/50 backdrop-blur-sm text-gray-200 px-3 py-1 rounded-full text-sm">
                           {event.registeredStudents.length}/{event.participantLimit} spots
